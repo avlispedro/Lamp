@@ -1,6 +1,39 @@
 ---
 - hosts: rackspace
   remote_user: root
-  tasks:
-    - name: test write
-      command: "/usr/bin/touch /tmp/playbookteste"
+  tasks: 
+    - name: Ensure python-apt is installed
+      command: >
+          apt-get install python-apt -y -q
+          creates=/usr/share/doc/python-apt
+
+    - name: 1. install apache2
+      apt: name=apache2 state=present
+
+    - name: 2. install PHP module for Apache
+      apt: name=libapache2-mod-php5 state=present
+
+    - name: 3. start Apache
+      service: name=apache2 state=running enabled=yes
+
+    - name: 4. install Hello World PHP script
+      copy: src=index.php dest=/var/www/html/index.php mode=0664
+
+
+
+
+
+
+
+
+
+
+
+
+
+# remote_user: root
+#tasks:
+#    - name: test write
+#      command: "/usr/bin/touch /tmp/playbookteste"
+
+# include: tasks/foo.yml
