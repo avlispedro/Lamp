@@ -3,4 +3,4 @@
   remote_user: root
   tasks:
     - name: test write
-      command: touch /tmp/playbook	
+      command: "/usr/bin/touch /tmp/playbookteste"
