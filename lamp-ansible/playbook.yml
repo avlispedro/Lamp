@@ -1,0 +1,6 @@
+---
+- hosts: rackspace
+  remote_user: root
+  tasks:
+    - name: test write
+      command: touch /tmp/playbook	
