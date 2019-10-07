@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             when { branch 'master' }
             steps {                
-                    sh '`which python3.6` -m venv ./venv'
+                    sh 'python -m virtualenv venv'
                     sh 'source ./venv/bin/activate && `which ping` -c 10 www.google.com'
                 }
             }
