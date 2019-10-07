@@ -14,6 +14,7 @@ pipeline {
             when { branch 'master' }
             steps {                
                     sh 'python -m virtualenv venv'
+                    sleep(2)
                     sh 'source ./venv/bin/activate && `which ping` -c 10 www.google.com'
                 }
             }
